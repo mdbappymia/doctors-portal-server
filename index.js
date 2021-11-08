@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // firebase initialization
-const serviceAccount = require("./key.json");
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUTN);
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
@@ -35,7 +35,7 @@ const run = async () => {
     const database = client.db("doctors_portal");
     const appointmentsCollection = database.collection("appointments");
     const userCollection = database.collection("user");
-
+    console.log("connected");
     // post appointments data to server
     app.post("/appointments", async (req, res) => {
       const appointment = req.body;
