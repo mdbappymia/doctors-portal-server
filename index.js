@@ -35,7 +35,6 @@ const run = async () => {
     const database = client.db("doctors_portal");
     const appointmentsCollection = database.collection("appointments");
     const userCollection = database.collection("user");
-    console.log("database connected");
 
     // post appointments data to server
     app.post("/appointments", async (req, res) => {
@@ -70,7 +69,6 @@ const run = async () => {
       const user = req.body;
       const result = await userCollection.insertOne(user);
       res.json(result);
-      console.log(result);
     });
 
     // update for google login
@@ -89,7 +87,6 @@ const run = async () => {
 
     // put admin email
     app.put("/users/admin", verifyToken, async (req, res) => {
-      console.log(req.decodedEmail);
       const user = req.body;
       const requester = req.decodedEmail;
 
