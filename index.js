@@ -5,9 +5,7 @@ const { MongoClient } = require("mongodb");
 const admin = require("firebase-admin");
 const ObjectId = require("mongodb").ObjectId;
 const fileUpload = require("express-fileupload");
-const stripe = require("stripe")(
-  "sk_test_51Jvo25G1rYfvGTLCgDEthBXB0LJUJEeDyYxydIm07gaCc8JeAxPtCYJe5OIcNB5AhbtEBjMfQPsa1qFrkkYkVKil00kKFvR6l3"
-);
+const stripe = require("stripe")(process.env.STRIPE_SECRET);
 const app = express();
 const port = process.env.PORT || 5000;
 app.use(cors());
@@ -23,6 +21,7 @@ admin.initializeApp({
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.iuevi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri);
 
+console.log(uri, process.env.STRIPE_SECRET);
 // firebase middlewire function
 
 const verifyToken = async (req, res, next) => {
