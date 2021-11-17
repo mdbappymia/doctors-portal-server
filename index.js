@@ -7,7 +7,7 @@ const ObjectId = require("mongodb").ObjectId;
 const fileUpload = require("express-fileupload");
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 const app = express();
-const port = process.env.PORT || 5050;
+const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(fileUpload());
