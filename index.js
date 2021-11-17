@@ -21,7 +21,7 @@ admin.initializeApp({
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.iuevi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri);
 
-console.log(uri, process.env.STRIPE_SECRET);
+console.log(process.env.FIREBASE_SERVICE_ACCOUNT);
 // firebase middlewire function
 
 const verifyToken = async (req, res, next) => {
